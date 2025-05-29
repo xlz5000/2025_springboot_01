@@ -2,6 +2,9 @@ package com.ict.edu01.jwt;
 
 import java.security.Key;
 import java.util.Date;
+
+import org.springframework.security.core.userdetails.UserDetails;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -81,6 +84,17 @@ public class JwtUtil {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    public boolean validateToken(String jwtToken, UserDetails userDetails) {
+
+        try {
+
+            validateAndExtractUserId(jwtToken);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
