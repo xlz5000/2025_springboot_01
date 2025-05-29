@@ -17,4 +17,8 @@
         select * from members where m_idx=#{m_idx}
     </select>
 
+    <select id="findUserById" resultType="MembersVO" parameterType="String">
+        select * from members where m_id=#{m_id}
+    </select>
+
 </mapper>

@@ -12,4 +12,6 @@ public interface MembersMapper {
 
     MembersVO getmypage(MembersVO mvo);
 
+    MembersVO findUserById(String m_id);
+
 }
