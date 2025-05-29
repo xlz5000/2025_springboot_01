@@ -1,10 +1,13 @@
 package com.ict.edu01.members.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ict.edu01.members.mapper.MembersMapper;
 import com.ict.edu01.members.vo.MembersVO;
+import com.ict.edu01.members.vo.RefreshVO;
 
 @Service
 public class MembersServiceImpl implements MembersService {
@@ -24,6 +27,12 @@ public class MembersServiceImpl implements MembersService {
     @Override
     public MembersVO getmypage(MembersVO mvo) {
         return membersMapper.getmypage(mvo);
+    }
+
+    @Override
+    public void saveRefreshToken(String m_id, String refreshToken, Date expiry_date) {
+        membersMapper.saveRefreshToken(new RefreshVO(m_id, refreshToken, expiry_date));
+
     }
 
 }
